@@ -1,0 +1,17 @@
+E:\Work_Visual\Fruit\Fruit\bin\Debug\net6.0-windows\Fruit.exe
+E:\Work_Visual\Fruit\Fruit\bin\Debug\net6.0-windows\Fruit.deps.json
+E:\Work_Visual\Fruit\Fruit\bin\Debug\net6.0-windows\Fruit.runtimeconfig.json
+E:\Work_Visual\Fruit\Fruit\bin\Debug\net6.0-windows\Fruit.dll
+E:\Work_Visual\Fruit\Fruit\bin\Debug\net6.0-windows\Fruit.pdb
+E:\Work_Visual\Fruit\Fruit\obj\Debug\net6.0-windows\Fruit.csproj.AssemblyReference.cache
+E:\Work_Visual\Fruit\Fruit\obj\Debug\net6.0-windows\Fruit.Form1.resources
+E:\Work_Visual\Fruit\Fruit\obj\Debug\net6.0-windows\Fruit.csproj.GenerateResource.cache
+E:\Work_Visual\Fruit\Fruit\obj\Debug\net6.0-windows\Fruit.GeneratedMSBuildEditorConfig.editorconfig
+E:\Work_Visual\Fruit\Fruit\obj\Debug\net6.0-windows\Fruit.AssemblyInfoInputs.cache
+E:\Work_Visual\Fruit\Fruit\obj\Debug\net6.0-windows\Fruit.AssemblyInfo.cs
+E:\Work_Visual\Fruit\Fruit\obj\Debug\net6.0-windows\Fruit.csproj.CoreCompileInputs.cache
+E:\Work_Visual\Fruit\Fruit\obj\Debug\net6.0-windows\Fruit.dll
+E:\Work_Visual\Fruit\Fruit\obj\Debug\net6.0-windows\refint\Fruit.dll
+E:\Work_Visual\Fruit\Fruit\obj\Debug\net6.0-windows\Fruit.pdb
+E:\Work_Visual\Fruit\Fruit\obj\Debug\net6.0-windows\Fruit.genruntimeconfig.cache
+E:\Work_Visual\Fruit\Fruit\obj\Debug\net6.0-windows\ref\Fruit.dll
