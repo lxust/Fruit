@@ -2,9 +2,8 @@ namespace Fruit
 {
     public partial class Form1 : Form
     {
-        int lvl = 0;
-        int cash = 0;
-        int mestaces = 0;
+
+        public static Player player; 
 
         public Dictionary<string, List<string>> fruitImages = new Dictionary<string, List<string>>() {
             ["bad"] = new List<string>() { "1.png", "2.png", "3.png", "4.png" },
@@ -16,27 +15,57 @@ namespace Fruit
         public Form1()
         {
             InitializeComponent();
-            FillLBL();
+            
+            
+            player = new Player(lblMoney, lblLevel, lblHelp);
             CourentPcbs();
+            FillLBL();
         }
 
         private void CourentPcbs()
         {
-            if (lvl >= 0 && lvl < 4)
+            if (player.lvl >= 0 && player.lvl < 4)
             {
                 pictureBoxes = new List<PictureBox> { pcb1, pcb2};
+                pcb1.Enabled = true;
+                pcb2.Enabled = true;
+
+                pcb3.ImageLocation = null;
+                pcb3.Enabled = false;
+                pcb4.ImageLocation = null;
+                pcb4.Enabled = false;
+                pcb5.ImageLocation = null;
+                pcb5.Enabled = false;
             }
-            else if (lvl >= 4 && lvl < 7)
+            else if (player.lvl >= 4 && player.lvl < 7)
             {
                 pictureBoxes = new List<PictureBox> { pcb1, pcb2, pcb3 };
+                pcb1.Enabled= true;
+                pcb2.Enabled= true;
+                pcb3.Enabled= true;
+                pcb3.Enabled = true;
+                pcb4.ImageLocation = null;
+                pcb4.Enabled = false;
             }
-            else if (lvl >= 7 && lvl < 9)
+            else if (player.lvl >= 7 && player.lvl < 9)
             {
                 pictureBoxes = new List<PictureBox> { pcb1, pcb2, pcb3, pcb4 };
+                pcb1.Enabled = true;
+                pcb2.Enabled = true;
+                pcb3.Enabled = true;
+                pcb4.Enabled = true;
+                pcb5.ImageLocation = null;
+                pcb5.Enabled = false;
+                pcb4.Enabled = true;
             }
-            else if (lvl >=10)
+            else if (player.lvl >=10)
             {
                 pictureBoxes = new List<PictureBox> { pcb1, pcb2, pcb3, pcb4, pcb5 };
+                pcb1.Enabled = true;
+                pcb2.Enabled = true;
+                pcb3.Enabled = true;
+                pcb4.Enabled = true;
+                pcb5.Enabled = true;
             }
         }
 
@@ -91,21 +120,21 @@ namespace Fruit
 
             if (type == "Bad")
             {
-                if (cash >= 20)
-                    cash -= 20;
+                if (player.cash >= 20)
+                    player.cash -= 20;
                 else
-                    cash = 0;
+                    player.cash = 0;
 
-                if (lvl > 0)
-                    lvl--;
+                if (player.lvl > 0)
+                    player.lvl--;
 
-                mestaces++;
+                player.mestaces++;
                 MessageBox.Show("Ïëîõîé ôðóêò!");
             }
             else if (type == "Good")
             {
-                cash += 10;
-                lvl++;
+                player.cash += 10;
+                player.lvl++;
             }
 
             FillLBL();
@@ -114,19 +143,20 @@ namespace Fruit
             GetFruits();
         }
 
-        private void FillLBL()
+        public void FillLBL()
         {
-            lblLevel.Text = lvl.ToString();
-            lblMoney.Text = cash.ToString();
+            player.UpdateInfo();
         }
         private void CheckWin()
         {
-            if (lvl == 11)
+            if (player.lvl == 11)
             {
-                MessageBox.Show($"ÏÎÁÅÄÀ!\n$={cash}\nÎøèáîê={mestaces}");
-                lvl = 0;
-                cash = 0;
-                mestaces = 0;
+                MessageBox.Show($"ÏÎÁÅÄÀ!\n$={player.cash}\nÎøèáîê={player.mestaces}");
+                player.lvl = 0;
+                player.cash = 0;
+                player.mestaces = 0;
+                player.usethelp = 0;
+                player._help = 0; 
                 FillLBL();
             }
         }
@@ -144,6 +174,48 @@ namespace Fruit
         private void pcb5_Click(object sender, EventArgs e)
         {
             CheckAnswer(pcb5);
+        }
+
+        private void btnBuy_Click(object sender, EventArgs e)
+        {
+            FillLBL();
+        }
+
+        private void btnUse_Click(object sender, EventArgs e)
+        {
+            if (player._help >= 1 && player.usethelp <= 1)
+            {
+                player.usethelp++;
+                player._help--;
+                int countDel = pictureBoxes.Count / 2;
+
+                foreach (PictureBox pictureBox in pictureBoxes)
+                {
+                    if (countDel > 0)
+                    {
+                        string type = pictureBox.ImageLocation.Split(@"\")[^2];
+                        if (type == "Bad")
+                        {
+                            pictureBox.ImageLocation = null;
+                            pictureBox.Enabled = false;
+                            countDel--;
+                        } 
+                    }
+                }
+
+                FillLBL();
+            }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            FormShop formShop = new FormShop();
+            formShop.Show();
         }
     }
 }
